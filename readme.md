@@ -39,7 +39,7 @@ Este projeto é uma API desenvolvida com FastAPI para gerenciar alunos, cursos e
 
 5. **Execute a aplicação:**
    ```sh
-   uvicorn app:app --reload
+  uvicorn app:app --reload 
    ```
 
 6. **Acesse a documentação interativa:**
