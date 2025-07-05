@@ -19,6 +19,8 @@ COPY . .
 # Expõe a porta 8000 para que a aplicação possa ser acessada de fora do contêiner.
 EXPOSE 8000
 
-# Comando para executar a aplicação quando o contêiner for iniciado.
-# Usamos 0.0.0.0 para que o servidor seja acessível externamente.
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000","--reload"]
+# Comando de produção para executar a aplicação.
+# Ele usa a variável de ambiente $PORT fornecida por plataformas como o Cloud Run.
+# Se $PORT não estiver definida, ele usa 8000 como padrão (útil para testes locais).
+# O 'exec' garante que o uvicorn receba os sinais do sistema corretamente.
+CMD exec uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}
