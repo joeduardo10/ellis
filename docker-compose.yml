@@ -6,10 +6,5 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-
-
-    
-
-
-
-
+    # Sobrescreve o CMD do Dockerfile para habilitar o hot-reload em desenvolvimento.
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
